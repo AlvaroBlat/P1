@@ -27,21 +27,103 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldId = new javax.swing.JTextField();
+        botonEntrarMedico = new javax.swing.JButton();
+        jTextFieldCont = new javax.swing.JTextField();
+        botonEntrarEnfermera = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel1.setText("HOSPITAL");
+
+        jTextFieldId.setText("Identificador");
+        jTextFieldId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIdActionPerformed(evt);
+            }
+        });
+
+        botonEntrarMedico.setText("Entrar modo Medico");
+        botonEntrarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEntrarMedicoActionPerformed(evt);
+            }
+        });
+
+        jTextFieldCont.setText("Contraseña");
+        jTextFieldCont.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldContActionPerformed(evt);
+            }
+        });
+
+        botonEntrarEnfermera.setText("Entrar modo Enfermera");
+        botonEntrarEnfermera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEntrarEnfermeraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldCont, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(286, 286, 286))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(178, 178, 178)))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(217, 217, 217)
+                .addComponent(botonEntrarMedico)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(botonEntrarEnfermera)
+                .addGap(161, 161, 161))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1)
+                .addGap(83, 83, 83)
+                .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jTextFieldCont, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonEntrarMedico)
+                    .addComponent(botonEntrarEnfermera))
+                .addGap(133, 133, 133))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIdActionPerformed
+
+    private void jTextFieldContActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldContActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldContActionPerformed
+
+    private void botonEntrarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEntrarMedicoActionPerformed
+        VentanaMedico medico = new VentanaMedico();
+        this.setVisible(false);
+        medico.setVisible(true);
+    }//GEN-LAST:event_botonEntrarMedicoActionPerformed
+
+    private void botonEntrarEnfermeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEntrarEnfermeraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonEntrarEnfermeraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +161,10 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonEntrarEnfermera;
+    private javax.swing.JButton botonEntrarMedico;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextFieldCont;
+    private javax.swing.JTextField jTextFieldId;
     // End of variables declaration//GEN-END:variables
 }
