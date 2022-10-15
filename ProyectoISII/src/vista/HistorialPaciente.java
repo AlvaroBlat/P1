@@ -5,17 +5,18 @@
  */
 package vista;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Alvaro
  */
-public class HistorialPaciente extends javax.swing.JPanel {
+public class HistorialPaciente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form HistorialPaciente
-     */
-    public HistorialPaciente() {
+    private JFrame frameAnterior;
+    public HistorialPaciente(JFrame frameAnterior) {
         initComponents();
+        this.frameAnterior=frameAnterior;
     }
 
     /**
@@ -34,6 +35,8 @@ public class HistorialPaciente extends javax.swing.JPanel {
         jDateChooser = new com.toedter.calendar.JDateChooser();
         textFieldNueva = new javax.swing.JTextField();
         botonVolver1 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         labelHistorial.setText("Historial Clínico");
 
@@ -60,8 +63,8 @@ public class HistorialPaciente extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -81,7 +84,7 @@ public class HistorialPaciente extends javax.swing.JPanel {
                                 .addComponent(textFieldNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(90, 90, 90)
                                 .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 416, Short.MAX_VALUE))
+                        .addGap(0, 381, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(botonVolver1)))
@@ -101,10 +104,12 @@ public class HistorialPaciente extends javax.swing.JPanel {
                     .addComponent(textFieldNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(botonAnyadir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addComponent(botonVolver1)
                 .addContainerGap())
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void textFieldNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNuevaActionPerformed
@@ -112,7 +117,8 @@ public class HistorialPaciente extends javax.swing.JPanel {
     }//GEN-LAST:event_textFieldNuevaActionPerformed
 
     private void botonVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolver1ActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        frameAnterior.setVisible(true);
     }//GEN-LAST:event_botonVolver1ActionPerformed
 
 

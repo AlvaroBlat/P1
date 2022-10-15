@@ -5,17 +5,18 @@
  */
 package vista;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Alvaro
  */
-public class Medicamento extends javax.swing.JPanel {
+public class Medicamento extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Medicamente
-     */
-    public Medicamento() {
+    private JFrame frameAnterior;
+    public Medicamento(JFrame frameAnterior) {
         initComponents();
+        this.frameAnterior=frameAnterior;
     }
 
     /**
@@ -27,7 +28,8 @@ public class Medicamento extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        botonVolver = new javax.swing.JButton();
+        labelAlergias = new javax.swing.JLabel();
+        botonVolver1 = new javax.swing.JButton();
         labelEfectos = new javax.swing.JLabel();
         labelNombre = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -37,13 +39,15 @@ public class Medicamento extends javax.swing.JPanel {
         labelLista = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         listaAlergias = new javax.swing.JList<>();
-        labelAlergias = new javax.swing.JLabel();
-        botonVolver1 = new javax.swing.JButton();
 
-        botonVolver.setText("Volver");
-        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        labelAlergias.setText("Posibles alergias:");
+
+        botonVolver1.setText("Volver");
+        botonVolver1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVolverActionPerformed(evt);
+                botonVolver1ActionPerformed(evt);
             }
         });
 
@@ -74,17 +78,8 @@ public class Medicamento extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(listaAlergias);
 
-        labelAlergias.setText("Posibles alergias:");
-
-        botonVolver1.setText("Volver");
-        botonVolver1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVolver1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -92,7 +87,7 @@ public class Medicamento extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelLista)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(labelEfectos)
@@ -141,19 +136,17 @@ public class Medicamento extends javax.swing.JPanel {
                 .addComponent(botonVolver1)
                 .addContainerGap())
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonVolverActionPerformed
-
     private void botonVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolver1ActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        frameAnterior.setVisible(true);
     }//GEN-LAST:event_botonVolver1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonVolver;
     private javax.swing.JButton botonVolver1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

@@ -9,10 +9,10 @@ package vista;
  *
  * @author Alvaro
  */
-public class Enfermedad extends javax.swing.JPanel {
+public class Enfermedad extends javax.swing.JFrame {
 
     /**
-     * Creates new form Enfermedad
+     * Creates new form Enfermeda
      */
     public Enfermedad() {
         initComponents();
@@ -27,41 +27,24 @@ public class Enfermedad extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelNombreEnfermedad = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listaTratamiento = new javax.swing.JList<>();
-        labelTratamiento = new javax.swing.JLabel();
-        labelDos = new javax.swing.JLabel();
-        labelNum = new javax.swing.JLabel();
-        labelNumDiaria = new javax.swing.JLabel();
-        listaInfo = new javax.swing.JLabel();
         labelContagiosa = new javax.swing.JLabel();
         labelEnfermedades = new javax.swing.JLabel();
         labelDosis = new javax.swing.JLabel();
+        labelNombreEnfermedad = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaEnfermedaades = new javax.swing.JList<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaTratamiento = new javax.swing.JList<>();
         CheckBoxSi = new javax.swing.JCheckBox();
+        labelTratamiento = new javax.swing.JLabel();
         CheckBoxNo = new javax.swing.JCheckBox();
+        labelDos = new javax.swing.JLabel();
         botonVolver = new javax.swing.JButton();
+        labelNum = new javax.swing.JLabel();
+        labelNumDiaria = new javax.swing.JLabel();
+        listaInfo = new javax.swing.JLabel();
 
-        labelNombreEnfermedad.setText("Nombre enfermedad");
-
-        listaTratamiento.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(listaTratamiento);
-
-        labelTratamiento.setText("Tratamiento");
-
-        labelDos.setText("Dosis");
-
-        labelNum.setText("Numero de dosis diaria");
-
-        labelNumDiaria.setText("Numero de dosis diarias:");
-
-        listaInfo.setText("Información del tratamiento");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         labelContagiosa.setText("Contagiosa:");
 
@@ -69,12 +52,21 @@ public class Enfermedad extends javax.swing.JPanel {
 
         labelDosis.setText("Dosis:");
 
+        labelNombreEnfermedad.setText("Nombre enfermedad");
+
         listaEnfermedaades.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane2.setViewportView(listaEnfermedaades);
+
+        listaTratamiento.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listaTratamiento);
 
         CheckBoxSi.setSelected(true);
         CheckBoxSi.setText("Si");
@@ -84,7 +76,11 @@ public class Enfermedad extends javax.swing.JPanel {
             }
         });
 
+        labelTratamiento.setText("Tratamiento");
+
         CheckBoxNo.setText("No");
+
+        labelDos.setText("Dosis");
 
         botonVolver.setText("Volver");
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -93,8 +89,14 @@ public class Enfermedad extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        labelNum.setText("Numero de dosis diaria");
+
+        labelNumDiaria.setText("Numero de dosis diarias:");
+
+        listaInfo.setText("Información del tratamiento");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -174,6 +176,8 @@ public class Enfermedad extends javax.swing.JPanel {
                 .addComponent(botonVolver)
                 .addContainerGap())
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void CheckBoxSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxSiActionPerformed

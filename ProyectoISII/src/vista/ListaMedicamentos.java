@@ -5,17 +5,18 @@
  */
 package vista;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Alvaro
  */
-public class ListaMedicamentos extends javax.swing.JPanel {
+public class ListaMedicamentos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ListaMedicamentos
-     */
-    public ListaMedicamentos() {
+    private JFrame frameAnterior;
+    public ListaMedicamentos(JFrame frameAnterior) {
         initComponents();
+        this.frameAnterior=frameAnterior;
     }
 
     /**
@@ -32,6 +33,8 @@ public class ListaMedicamentos extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaListaMedicamentos = new javax.swing.JList<>();
         botonVolver = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         textFieldCantidadMedicamento.setText("Cantidad de medicamento");
         textFieldCantidadMedicamento.addActionListener(new java.awt.event.ActionListener() {
@@ -50,9 +53,14 @@ public class ListaMedicamentos extends javax.swing.JPanel {
         jScrollPane1.setViewportView(listaListaMedicamentos);
 
         botonVolver.setText("Volver");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -79,15 +87,22 @@ public class ListaMedicamentos extends javax.swing.JPanel {
                     .addComponent(botonBuscarListaMedicamentos))
                 .addGap(57, 57, 57)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(botonVolver)
                 .addContainerGap())
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void textFieldCantidadMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCantidadMedicamentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldCantidadMedicamentoActionPerformed
+
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+        this.setVisible(false);
+        frameAnterior.setVisible(true);
+    }//GEN-LAST:event_botonVolverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
