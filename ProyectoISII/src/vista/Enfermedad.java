@@ -5,17 +5,18 @@
  */
 package vista;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Alvaro
  */
 public class Enfermedad extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Enfermeda
-     */
-    public Enfermedad() {
+    private JFrame frameAnterior;
+    public Enfermedad(JFrame frameAnterior) {
         initComponents();
+        this.frameAnterior=frameAnterior;
     }
 
     /**
@@ -185,7 +186,8 @@ public class Enfermedad extends javax.swing.JFrame {
     }//GEN-LAST:event_CheckBoxSiActionPerformed
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        frameAnterior.setVisible(true);
     }//GEN-LAST:event_botonVolverActionPerformed
 
 
