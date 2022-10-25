@@ -158,6 +158,7 @@ public class Login extends javax.swing.JFrame {
             enfermera = new VentanaEnfermera(this);
             this.setVisible(false);
             enfermera.setVisible(true);
+            System.out.println("Hola");
 
         }
     }//GEN-LAST:event_buttonEntrarActionPerformed
