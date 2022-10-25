@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="vista.prueba2_Enfermera">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <tabbedpane id="c2869" binding="tabbedPane1" default-binding="true">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="6d2b7" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <tabbedpane title="Administrar medicamentos"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="e29d4" class="javax.swing.JTable" binding="table1" default-binding="true">
+                <constraints border-constraint="West"/>
+                <properties/>
+              </component>
+            </children>
+          </grid>
+          <grid id="99bc9" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <tabbedpane title="Consultar botiqun"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="a411d" class="javax.swing.JButton" binding="button1" default-binding="true">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <text value="Button"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </tabbedpane>
+    </children>
+  </grid>
+</form>
