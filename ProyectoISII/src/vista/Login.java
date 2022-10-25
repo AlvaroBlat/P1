@@ -26,12 +26,14 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupLogin = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldId = new javax.swing.JTextField();
-        botonEntrarMedico = new javax.swing.JButton();
         jTextFieldCont = new javax.swing.JTextField();
-        botonEntrarEnfermera = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        buttonEntrar = new javax.swing.JButton();
+        buttonMedico = new javax.swing.JRadioButton();
+        buttonEnfermera = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,24 +47,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        botonEntrarMedico.setText("Entrar modo Medico");
-        botonEntrarMedico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEntrarMedicoActionPerformed(evt);
-            }
-        });
-
         jTextFieldCont.setText("Contraseña");
         jTextFieldCont.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldContActionPerformed(evt);
-            }
-        });
-
-        botonEntrarEnfermera.setText("Entrar modo Enfermera");
-        botonEntrarEnfermera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEntrarEnfermeraActionPerformed(evt);
             }
         });
 
@@ -73,16 +61,23 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        buttonEntrar.setText("Entrar");
+        buttonEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEntrarActionPerformed(evt);
+            }
+        });
+
+        buttonGroupLogin.add(buttonMedico);
+        buttonMedico.setText("Modo Médico");
+
+        buttonGroupLogin.add(buttonEnfermera);
+        buttonEnfermera.setText("Modo Enfermera");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(217, 217, 217)
-                .addComponent(botonEntrarMedico)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(botonEntrarEnfermera)
-                .addGap(161, 161, 161))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,6 +93,16 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(232, 232, 232)
+                .addComponent(buttonMedico)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addComponent(buttonEnfermera)
+                .addGap(211, 211, 211))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(362, 362, 362)
+                .addComponent(buttonEntrar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,11 +113,13 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jTextFieldCont, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonEntrarMedico)
-                    .addComponent(botonEntrarEnfermera))
-                .addGap(88, 88, 88)
+                    .addComponent(buttonMedico)
+                    .addComponent(buttonEnfermera))
+                .addGap(57, 57, 57)
+                .addComponent(buttonEntrar)
+                .addGap(84, 84, 84)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -128,21 +135,24 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldContActionPerformed
 
-    private void botonEntrarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEntrarMedicoActionPerformed
-        medico = new VentanaMedico(this);
-        this.setVisible(false);
-        medico.setVisible(true);
-    }//GEN-LAST:event_botonEntrarMedicoActionPerformed
-
-    private void botonEntrarEnfermeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEntrarEnfermeraActionPerformed
-        enfermera = new VentanaEnfermera(this);
-        this.setVisible(false);
-        enfermera.setVisible(true);
-    }//GEN-LAST:event_botonEntrarEnfermeraActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void buttonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntrarActionPerformed
+        if (buttonMedico.isSelected()) {
+
+            medico = new VentanaMedico(this);
+            this.setVisible(false);
+            medico.setVisible(true);
+
+        } else if (buttonEnfermera.isSelected()) {
+            enfermera = new VentanaEnfermera(this);
+            this.setVisible(false);
+            enfermera.setVisible(true);
+
+        }
+    }//GEN-LAST:event_buttonEntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,8 +163,10 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonEntrarEnfermera;
-    private javax.swing.JButton botonEntrarMedico;
+    private javax.swing.JRadioButton buttonEnfermera;
+    private javax.swing.JButton buttonEntrar;
+    private javax.swing.ButtonGroup buttonGroupLogin;
+    private javax.swing.JRadioButton buttonMedico;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextFieldCont;
