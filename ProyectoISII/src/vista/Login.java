@@ -5,6 +5,9 @@
  */
 package vista;
 
+import controlador.Enfermera;
+import controlador.Medico;
+
 /**
  *
  * @author Alvaro
@@ -28,7 +31,7 @@ public class Login extends javax.swing.JFrame {
 
         buttonGroupLogin = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldId = new javax.swing.JTextField();
+        textFieldIdentificador = new javax.swing.JTextField();
         jTextFieldCont = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         buttonEntrar = new javax.swing.JButton();
@@ -40,10 +43,10 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setText("HOSPITAL");
 
-        jTextFieldId.setText("Identificador");
-        jTextFieldId.addActionListener(new java.awt.event.ActionListener() {
+        textFieldIdentificador.setText("Identificador");
+        textFieldIdentificador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldIdActionPerformed(evt);
+                textFieldIdentificadorActionPerformed(evt);
             }
         });
 
@@ -73,6 +76,11 @@ public class Login extends javax.swing.JFrame {
 
         buttonGroupLogin.add(buttonEnfermera);
         buttonEnfermera.setText("Modo Enfermera");
+        buttonEnfermera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEnfermeraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,7 +96,7 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGap(286, 286, 286))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textFieldIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(178, 178, 178))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1)
@@ -110,7 +118,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1)
                 .addGap(83, 83, 83)
-                .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textFieldIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jTextFieldCont, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
@@ -127,9 +135,9 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdActionPerformed
+    private void textFieldIdentificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdentificadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldIdActionPerformed
+    }//GEN-LAST:event_textFieldIdentificadorActionPerformed
 
     private void jTextFieldContActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldContActionPerformed
         // TODO add your handling code here:
@@ -154,12 +162,21 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonEntrarActionPerformed
 
+    private void buttonEnfermeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEnfermeraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonEnfermeraActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         Login login = new Login();
         login.setVisible(true);
+        
+        Medico medico = new Medico("a","a",0,"cont0");
+        Enfermera enfermera = new Enfermera("a","a",1,"cont1");
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -170,6 +187,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextFieldCont;
-    private javax.swing.JTextField jTextFieldId;
+    private javax.swing.JTextField textFieldIdentificador;
     // End of variables declaration//GEN-END:variables
 }
