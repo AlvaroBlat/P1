@@ -6,6 +6,8 @@
 package vista;
 
 import controlador.Enfermera;
+import controlador.ListaEnfermeras;
+import controlador.ListaMedicos;
 import controlador.Medico;
 
 /**
@@ -16,6 +18,9 @@ public class Login extends javax.swing.JFrame {
 
     private MenuMedico medico;
     private VentanaEnfermera enfermera;
+    private static ListaEnfermeras listaEnfermeras= new ListaEnfermeras();
+    private static ListaMedicos listaMedicos= new ListaMedicos();
+    
     public Login() {
         initComponents();
     }
@@ -35,22 +40,20 @@ public class Login extends javax.swing.JFrame {
         jTextFieldCont = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         buttonEntrar = new javax.swing.JButton();
-        buttonMedico = new javax.swing.JRadioButton();
-        buttonEnfermera = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setText("HOSPITAL");
 
-        textFieldIdentificador.setText("Identificador");
         textFieldIdentificador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldIdentificadorActionPerformed(evt);
             }
         });
 
-        jTextFieldCont.setText("Contraseña");
         jTextFieldCont.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldContActionPerformed(evt);
@@ -71,42 +74,30 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        buttonGroupLogin.add(buttonMedico);
-        buttonMedico.setText("Modo Médico");
+        jLabel2.setText("Identificador");
 
-        buttonGroupLogin.add(buttonEnfermera);
-        buttonEnfermera.setText("Modo Enfermera");
-        buttonEnfermera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonEnfermeraActionPerformed(evt);
-            }
-        });
+        jLabel3.setText("Contraseña");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(160, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextFieldCont, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(286, 286, 286))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(textFieldIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(178, 178, 178))))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textFieldIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jTextFieldCont, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(75, 75, 75))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(232, 232, 232)
-                .addComponent(buttonMedico)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                .addComponent(buttonEnfermera)
-                .addGap(211, 211, 211))
             .addGroup(layout.createSequentialGroup()
                 .addGap(362, 362, 362)
                 .addComponent(buttonEntrar)
@@ -117,15 +108,15 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1)
-                .addGap(83, 83, 83)
-                .addComponent(textFieldIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jTextFieldCont, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGap(81, 81, 81)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonMedico)
-                    .addComponent(buttonEnfermera))
-                .addGap(57, 57, 57)
+                    .addComponent(textFieldIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldCont, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addComponent(buttonEntrar)
                 .addGap(84, 84, 84)
                 .addComponent(jButton1)
@@ -148,19 +139,27 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void buttonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntrarActionPerformed
-        if (buttonMedico.isSelected()) {
 
+        int ident = Integer.parseInt(textFieldIdentificador.getText());
+        String cont = jTextFieldCont.getText();
+        Medico aux = new Medico(ident,cont);
+        Enfermera auxE = new Enfermera(ident,cont);
+        
+        
+        if (listaMedicos.contains(aux))
+        {
             medico = new MenuMedico(this);
             this.setVisible(false);
             medico.setVisible(true);
-
-        } else if (buttonEnfermera.isSelected()) {
+        }
+        else if (listaEnfermeras.contains(auxE))
+        {
             enfermera = new VentanaEnfermera(this);
             this.setVisible(false);
             enfermera.setVisible(true);
-            System.out.println("Hola");
-
         }
+        
+        else System.out.println("Error en identificador o contraseña");
     }//GEN-LAST:event_buttonEntrarActionPerformed
 
     private void buttonEnfermeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEnfermeraActionPerformed
@@ -174,19 +173,22 @@ public class Login extends javax.swing.JFrame {
         Login login = new Login();
         login.setVisible(true);
         
-        Medico medico = new Medico("a","a",0,"cont0");
-        Enfermera enfermera = new Enfermera("a","a",1,"cont1");
+        Medico medico = new Medico(0,"cont0");
+        Enfermera enfermera = new Enfermera(1,"cont1");
+        
+        listaMedicos.addMedico(medico);
+        listaEnfermeras.addEnfermera(enfermera);
         
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton buttonEnfermera;
     private javax.swing.JButton buttonEntrar;
     private javax.swing.ButtonGroup buttonGroupLogin;
-    private javax.swing.JRadioButton buttonMedico;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextFieldCont;
     private javax.swing.JTextField textFieldIdentificador;
     // End of variables declaration//GEN-END:variables
