@@ -14,7 +14,7 @@ import controlador.Medico;
  */
 public class Login extends javax.swing.JFrame {
 
-    private VentanaMedico medico;
+    private MenuMedico medico;
     private VentanaEnfermera enfermera;
     public Login() {
         initComponents();
@@ -150,7 +150,7 @@ public class Login extends javax.swing.JFrame {
     private void buttonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntrarActionPerformed
         if (buttonMedico.isSelected()) {
 
-            medico = new VentanaMedico(this);
+            medico = new MenuMedico(this);
             this.setVisible(false);
             medico.setVisible(true);
 
