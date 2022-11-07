@@ -6,12 +6,15 @@
 package vista;
 
 import javax.swing.JFrame;
+import controlador.Enfermo;
+import controlador.ListaEnfermos;
 
 /**
  *
  * @author miguelguillen
  */
 public class BuscarPaciente extends javax.swing.JFrame {
+    private static ListaEnfermos lista_enfermos= new ListaEnfermos();
 
     private JFrame frameAnterior;
     /**
@@ -131,9 +134,21 @@ public class BuscarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        HistorialPaciente paciente = new HistorialPaciente(this);
-        this.setVisible(false);
-        paciente.setVisible(true);
+        //Añadimos un ejemplo
+        Enfermo a= new Enfermo("12345678A");
+        lista_enfermos.addEnfermo(a);
+        //Comprobamos
+        String identificador = jTextField1.getText();
+        Enfermo aux= new Enfermo(identificador);
+        
+        if(lista_enfermos.contains(aux)){
+            System.out.println("El paciente con DNI: "+ aux.getIdentificador()+ "ha sido dado de alta.");
+            int i= lista_enfermos.PosicionEnfermo(aux);
+            lista_enfermos.BorrarPaciente(i);
+        } else
+            System.out.println("DNI NO ENCONTRADO");
+       
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
