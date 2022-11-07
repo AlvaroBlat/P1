@@ -17,7 +17,7 @@ import controlador.Medico;
 public class Login extends javax.swing.JFrame {
 
     private MenuMedico medico;
-    private VentanaEnfermera enfermera;
+    private MenuEnfermera enfermera;
     private static ListaEnfermeras listaEnfermeras= new ListaEnfermeras();
     private static ListaMedicos listaMedicos= new ListaMedicos();
     
@@ -154,7 +154,7 @@ public class Login extends javax.swing.JFrame {
         }
         else if (listaEnfermeras.contains(auxE))
         {
-            enfermera = new VentanaEnfermera(this);
+            enfermera = new MenuEnfermera(this);
             this.setVisible(false);
             enfermera.setVisible(true);
         }
