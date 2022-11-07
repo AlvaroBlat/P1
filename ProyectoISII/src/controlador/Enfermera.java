@@ -10,33 +10,12 @@ package controlador;
  * @author Alvaro
  */
 public class Enfermera {
-    // Holaaaaaaaaaaaaaaaaaaaaaaaaa
-    private String nombre;
-    private String apellido;
     private int identificador;
     private String contraseña;
 
-    public Enfermera(String nombre, String apellido, int identificador, String contraseña) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public Enfermera(int identificador, String contraseña) {
         this.identificador = identificador;
         this.contraseña = contraseña;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
     }
 
     public int getIdentificador() {
