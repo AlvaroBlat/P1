@@ -5,7 +5,14 @@
  */
 package vista;
 
+import controlador.Enfermo;
+import controlador.ListaEnfermos;
+import java.awt.Component;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 
 /**
  *
@@ -13,12 +20,49 @@ import javax.swing.JFrame;
  */
 public class VerPacientes extends javax.swing.JFrame {
 
+    private ListaEnfermos listaEnfermos;
     private JFrame frameAnterior;
     public VerPacientes(JFrame frameAnterior) {
         initComponents();
         this.frameAnterior=frameAnterior;
     }
 
+    
+    /**
+     *
+     */
+    public void updateListActividades() {
+
+        DefaultListModel listModelPacientes = new DefaultListModel();
+        for (Object item : listaEnfermos.consultarPacientes()) {
+            listModelPacientes.addElement(item);
+        }
+
+        listaPacientes.setModel(listModelPacientes);
+        listaPacientes.setCellRenderer(new NombrePacienteCellRenderer());
+    }
+    
+    /**
+     *
+     */
+    public class NombrePacienteCellRenderer extends DefaultListCellRenderer {
+
+        public Component getListCellRendererComponent(
+                JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+
+            JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+            label.setText(value.toString());
+            return label;
+        }
+    }
+    
+    
+    public void limpiarDetallesPaciente() {
+        labelNom.setText("");
+        labelApe.setText("");
+        labelHab.setText("");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,6 +113,11 @@ public class VerPacientes extends javax.swing.JFrame {
             String[] strings = { "Paciente 1", "Paciente 2", "Paciente 3" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        listaPacientes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaPacientesValueChanged(evt);
+            }
         });
         jScrollPane1.setViewportView(listaPacientes);
 
@@ -159,6 +208,22 @@ public class VerPacientes extends javax.swing.JFrame {
         this.setVisible(false);
         frameAnterior.setVisible(true);
     }//GEN-LAST:event_botonVolverActionPerformed
+
+    private void listaPacientesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaPacientesValueChanged
+        // TODO add your handling code here:
+        //Si se selecciona un paciente valido
+        if (!listaPacientes.getValueIsAdjusting() && listaPacientes.getSelectedValue() != null) {
+            //Limpiar campos del paciente actual
+            limpiarDetallesPaciente();
+            //Rellenar campos del paciente actual
+            Object paciente = listaPacientes.getSelectedValue();
+            Enfermo detallesPaciente = listaEnfermos.consultarDetallesEnfermo(paciente);
+            labelNom.setText(detallesPaciente.getIdentificador());
+            labelApe.setText(detallesPaciente.getApellidos());
+            labelHab.setText(detallesPaciente.getHabitacion());
+           
+        }
+    }//GEN-LAST:event_listaPacientesValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlador;
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -57,5 +58,22 @@ public class ListaEnfermos {
     public void BorrarPaciente(int i){
         vectorEnfermos.remove(i);
     }
+    
+    /**
+     * Metodo consultarPacientes
+     *
+     * @return
+     */
+    public ArrayList<Object> consultarPacientes() {
+        ArrayList<Object> actividades = new ArrayList<>();
+        return actividades;
+    }
+    
+    public Enfermo consultarDetallesEnfermo(Object enf) {
+        Enfermo detallesPaciente = detallesPaciente = ((Enfermo) enf); //Nose si esta bien!!!
+        //setPaciente(enf);
+        return detallesPaciente;
+    }
+    
     
 }

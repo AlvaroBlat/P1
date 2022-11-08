@@ -135,7 +135,7 @@ public class BuscarPaciente extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Añadimos un ejemplo
-        Enfermo a= new Enfermo("12345678A");
+        Enfermo a= new Enfermo("12345678A","Eustaquio","Alonso","245");
         lista_enfermos.addEnfermo(a);
         //Comprobamos
         String identificador = jTextField1.getText();

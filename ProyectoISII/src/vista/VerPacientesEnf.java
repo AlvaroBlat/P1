@@ -5,7 +5,14 @@
  */
 package vista;
 
+import controlador.Enfermo;
+import controlador.ListaEnfermos;
+import java.awt.Component;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 
 /**
  *
@@ -13,12 +20,49 @@ import javax.swing.JFrame;
  */
 public class VerPacientesEnf extends javax.swing.JFrame {
 
+    private ListaEnfermos listaEnfermos;
     private JFrame frameAnterior;
     public VerPacientesEnf(JFrame frameAnterior) {
         initComponents();
         this.frameAnterior=frameAnterior;
     }
 
+    
+    /**
+     *
+     */
+    public void updateListActividades() {
+
+        DefaultListModel listModelPacientes = new DefaultListModel();
+        for (Object item : listaEnfermos.consultarPacientes()) {
+            listModelPacientes.addElement(item);
+        }
+
+        listaPacientes.setModel(listModelPacientes);
+        listaPacientes.setCellRenderer(new NombrePacienteCellRenderer());
+    }
+    
+    /**
+     *
+     */
+    public class NombrePacienteCellRenderer extends DefaultListCellRenderer {
+
+        public Component getListCellRendererComponent(
+                JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+
+            JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+            label.setText(value.toString());
+            return label;
+        }
+    }
+    
+    
+    public void limpiarDetallesPaciente() {
+        jLabelNombre.setText("");
+        jLabelApellidos.setText("");
+        jLabelHabitacion.setText("");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,11 +73,11 @@ public class VerPacientesEnf extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
+        jLabelApellidos = new javax.swing.JLabel();
         labelApellidos = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaPacientes = new javax.swing.JList<>();
-        jLabel6 = new javax.swing.JLabel();
+        jLabelHabitacion = new javax.swing.JLabel();
         labelPacientes = new javax.swing.JLabel();
         labelHabitacion = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -42,12 +86,12 @@ public class VerPacientesEnf extends javax.swing.JFrame {
         labelSintomas = new javax.swing.JLabel();
         labelNombre = new javax.swing.JLabel();
         jCalendar1 = new com.toedter.calendar.JCalendar();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelNombre = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel4.setText("Apellidos");
+        jLabelApellidos.setText("Apellidos");
 
         labelApellidos.setText("Apellidos:");
 
@@ -56,9 +100,14 @@ public class VerPacientesEnf extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        listaPacientes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaPacientesValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(listaPacientes);
 
-        jLabel6.setText("Habitacion");
+        jLabelHabitacion.setText("Habitacion");
 
         labelPacientes.setText("Lista de pacientes");
 
@@ -77,7 +126,7 @@ public class VerPacientesEnf extends javax.swing.JFrame {
 
         labelNombre.setText("Nombre:");
 
-        jLabel3.setText("Nombre");
+        jLabelNombre.setText("Nombre");
 
         jButton2.setText("Volver");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -101,15 +150,15 @@ public class VerPacientesEnf extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(labelNombre)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(labelApellidos)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(labelHabitacion)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabelHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelSintomas)
@@ -146,15 +195,15 @@ public class VerPacientesEnf extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(labelNombre)
-                                    .addComponent(jLabel3))
+                                    .addComponent(jLabelNombre))
                                 .addGap(31, 31, 31)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(labelApellidos)
-                                    .addComponent(jLabel4))
+                                    .addComponent(jLabelApellidos))
                                 .addGap(40, 40, 40)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(labelHabitacion)
-                                    .addComponent(jLabel6))
+                                    .addComponent(jLabelHabitacion))
                                 .addGap(61, 61, 61)
                                 .addComponent(labelSintomas)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)))
@@ -170,13 +219,29 @@ public class VerPacientesEnf extends javax.swing.JFrame {
         frameAnterior.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void listaPacientesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaPacientesValueChanged
+        // TODO add your handling code here:
+        //Si se selecciona un paciente valido
+        if (!listaPacientes.getValueIsAdjusting() && listaPacientes.getSelectedValue() != null) {
+            //Limpiar campos del paciente actual
+            limpiarDetallesPaciente();
+            //Rellenar campos del paciente actual
+            Object paciente = listaPacientes.getSelectedValue();
+            Enfermo detallesPaciente = listaEnfermos.consultarDetallesEnfermo(paciente);
+            jLabelNombre.setText(detallesPaciente.getIdentificador());
+            jLabelApellidos.setText(detallesPaciente.getApellidos());
+            jLabelHabitacion.setText(detallesPaciente.getHabitacion());
+           
+        }
+    }//GEN-LAST:event_listaPacientesValueChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabelApellidos;
+    private javax.swing.JLabel jLabelHabitacion;
+    private javax.swing.JLabel jLabelNombre;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
