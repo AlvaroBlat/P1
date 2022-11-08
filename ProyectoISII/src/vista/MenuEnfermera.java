@@ -84,8 +84,8 @@ public class MenuEnfermera extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(181, 181, 181)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(193, Short.MAX_VALUE))
+                        .addComponent(jButton2)))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +118,7 @@ public class MenuEnfermera extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ListaMedicamentos medicamentos = new ListaMedicamentos(this);
+        MedicamentosPorFecha medicamentos = new MedicamentosPorFecha(this);
         this.setVisible(false);
         medicamentos.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed

@@ -21,6 +21,9 @@ public class MedicamentosPorFecha extends javax.swing.JFrame {
     public MedicamentosPorFecha(JFrame frameAnterior) {
         initComponents();
         this.frameAnterior = frameAnterior;
+        jTextField1.setEditable(false);
+        jTextArea1.setEditable(false);
+        jTextArea2.setEditable(false);
     }
 
 
@@ -141,6 +144,7 @@ public class MedicamentosPorFecha extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
+        jTextField1.setEditable(false);
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -149,11 +153,11 @@ public class MedicamentosPorFecha extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String p0 = "Nombre: Perez \n Habitacion: 1001 \n Medicamentos: 30mg Ibuprofeno \n\n";
-        String p1 = "Nombre: Gil \n Habitacion: 99 \n Medicamentos: 50mg Morfina \n\n";
-        String p2 = "Nombre: Gallen \n Habitacion: 1441 \n Medicamentos: 30mg Omeoprazol \n\n";
-        String p3 = "Nombre: Fernandez \n Habitacion: 1563 \n Medicamentos: 400mg Ibuprofeno \n\n";
-        String p4 = "Nombre: Serano \n Habitacion: 6969 \n Medicamentos: 30mg Desamortil \n\n";
+        String p0 = "Nombre: Perez\n Habitacion: 1001\nMedicamentos: 30mg Ibuprofeno \n\n";
+        String p1 = "Nombre: Gil\nHabitacion: 99\n Medicamentos: 50mg Morfina \n\n";
+        String p2 = "Nombre: Gallen\nHabitacion: 1441\nMedicamentos: 30mg Omeoprazol \n\n";
+        String p3 = "Nombre: Fernandez\nHabitacion: 1563\n Medicamentos: 400mg Ibuprofeno \n\n";
+        String p4 = "Nombre: Serano\nHabitacion: 6969\nMedicamentos: 30mg Desamortil \n\n";
         
         SimpleDateFormat Formato = new SimpleDateFormat("dd/MM/yyyy");
         String fecha = Formato.format(jDateChooser1.getDate());
@@ -163,10 +167,10 @@ public class MedicamentosPorFecha extends javax.swing.JFrame {
         int año = Integer.parseInt(parts[2]);
         
         if(dia == 25 && mes == 10 && año == 2022){
-            jTextArea1.setText(p0+ p1+p2);
+            jTextArea1.setText(p0+p1+p2);
         }
         else if(dia == 30 && mes == 10 && año == 2022){
-            jTextArea1.setText(p3+ p4);
+            jTextArea1.setText(p3+p4);
         }
         else{
             jTextArea1.setText("En esa fecha no hay datos");
