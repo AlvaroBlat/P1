@@ -5,8 +5,8 @@
  */
 package vista;
 
-import controlador.Enfermo;
-import controlador.ListaEnfermos;
+import controlador.Paciente;
+import controlador.ListaPacientes;
 import java.awt.Component;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
@@ -20,7 +20,7 @@ import javax.swing.JList;
  */
 public class VerPacientesEnf extends javax.swing.JFrame {
 
-    private ListaEnfermos listaEnfermos;
+    private ListaPacientes listaEnfermos;
     private JFrame frameAnterior;
     public VerPacientesEnf(JFrame frameAnterior) {
         initComponents();
@@ -227,7 +227,7 @@ public class VerPacientesEnf extends javax.swing.JFrame {
             limpiarDetallesPaciente();
             //Rellenar campos del paciente actual
             Object paciente = listaPacientes.getSelectedValue();
-            Enfermo detallesPaciente = listaEnfermos.consultarDetallesEnfermo(paciente);
+            Paciente detallesPaciente = listaEnfermos.consultarDetallesEnfermo(paciente);
             jLabelNombre.setText(detallesPaciente.getIdentificador());
             jLabelApellidos.setText(detallesPaciente.getApellidos());
             jLabelHabitacion.setText(detallesPaciente.getHabitacion());

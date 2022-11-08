@@ -179,7 +179,6 @@ public class Login extends javax.swing.JFrame {
         listaMedicos.addMedico(medico);
         listaEnfermeras.addEnfermera(enfermera);
         
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

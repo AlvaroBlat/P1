@@ -5,14 +5,15 @@
  */
 package vista;
 
-import controlador.Enfermo;
-import controlador.ListaEnfermos;
+import controlador.Paciente;
+import controlador.ListaPacientes;
 import java.awt.Component;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.ListModel;
 
 /**
  *
@@ -20,11 +21,14 @@ import javax.swing.JList;
  */
 public class VerPacientes extends javax.swing.JFrame {
 
-    private ListaEnfermos listaEnfermos;
+    private ListaPacientes listaEnfermos = new ListaPacientes();
     private JFrame frameAnterior;
     public VerPacientes(JFrame frameAnterior) {
         initComponents();
         this.frameAnterior=frameAnterior;
+        
+        TextAreaPacientes.setText(listaEnfermos.listarListaPacientes());
+        TextAreaPacientes.setEditable(false);
     }
 
     
@@ -38,8 +42,8 @@ public class VerPacientes extends javax.swing.JFrame {
             listModelPacientes.addElement(item);
         }
 
-        listaPacientes.setModel(listModelPacientes);
-        listaPacientes.setCellRenderer(new NombrePacienteCellRenderer());
+        JListPacientes.setModel(listModelPacientes);
+        JListPacientes.setCellRenderer(new NombrePacienteCellRenderer());
     }
     
     /**
@@ -79,13 +83,15 @@ public class VerPacientes extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         listaEnfermedades = new javax.swing.JList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listaPacientes = new javax.swing.JList<>();
+        JListPacientes = new javax.swing.JList<>();
         labelPacientes = new javax.swing.JLabel();
         labelInfo = new javax.swing.JLabel();
         labelNombre = new javax.swing.JLabel();
         labelNom = new javax.swing.JLabel();
         jCalendar2 = new com.toedter.calendar.JCalendar();
         labelApe = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TextAreaPacientes = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,17 +115,17 @@ public class VerPacientes extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(listaEnfermedades);
 
-        listaPacientes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Paciente 1", "Paciente 2", "Paciente 3" };
+        JListPacientes.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "P1", "P2", "P3" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        listaPacientes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        JListPacientes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                listaPacientesValueChanged(evt);
+                JListPacientesValueChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(listaPacientes);
+        jScrollPane1.setViewportView(JListPacientes);
 
         labelPacientes.setText("Lista de pacientes");
 
@@ -130,6 +136,10 @@ public class VerPacientes extends javax.swing.JFrame {
         labelNom.setText("Nombre");
 
         labelApe.setText("Apellidos");
+
+        TextAreaPacientes.setColumns(20);
+        TextAreaPacientes.setRows(5);
+        jScrollPane3.setViewportView(TextAreaPacientes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,7 +155,7 @@ public class VerPacientes extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addComponent(botonVolver)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,21 +163,25 @@ public class VerPacientes extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelInfo)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(labelNombre)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(labelNom, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(labelApellidos)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(labelApe, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(labelHabitacion)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(labelHab, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(190, 190, 190))))
+                        .addGap(190, 190, 190))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(labelNombre)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelNom, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelApellidos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelApe, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelHabitacion)
+                                .addGap(18, 18, 18)
+                                .addComponent(labelHab, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,17 +199,20 @@ public class VerPacientes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelInfo)
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelNombre)
-                    .addComponent(labelNom))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelApellidos)
-                    .addComponent(labelApe))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelHabitacion)
-                    .addComponent(labelHab))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelNombre)
+                            .addComponent(labelNom))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelApellidos)
+                            .addComponent(labelApe))
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelHabitacion)
+                            .addComponent(labelHab)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(80, Short.MAX_VALUE))
@@ -209,28 +226,33 @@ public class VerPacientes extends javax.swing.JFrame {
         frameAnterior.setVisible(true);
     }//GEN-LAST:event_botonVolverActionPerformed
 
-    private void listaPacientesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaPacientesValueChanged
+    private void JListPacientesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_JListPacientesValueChanged
         // TODO add your handling code here:
         //Si se selecciona un paciente valido
-        if (!listaPacientes.getValueIsAdjusting() && listaPacientes.getSelectedValue() != null) {
+        if (!JListPacientes.getValueIsAdjusting() && JListPacientes.getSelectedValue() != null) {
             //Limpiar campos del paciente actual
             limpiarDetallesPaciente();
             //Rellenar campos del paciente actual
-            Object paciente = listaPacientes.getSelectedValue();
-            Enfermo detallesPaciente = listaEnfermos.consultarDetallesEnfermo(paciente);
+            
+            
+            Object paciente = JListPacientes.getSelectedValue();
+            Paciente detallesPaciente = listaEnfermos.consultarDetallesEnfermo(paciente);
             labelNom.setText(detallesPaciente.getIdentificador());
             labelApe.setText(detallesPaciente.getApellidos());
             labelHab.setText(detallesPaciente.getHabitacion());
-           
+
         }
-    }//GEN-LAST:event_listaPacientesValueChanged
+    }//GEN-LAST:event_JListPacientesValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> JListPacientes;
+    private javax.swing.JTextArea TextAreaPacientes;
     private javax.swing.JButton botonVolver;
     private com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel labelApe;
     private javax.swing.JLabel labelApellidos;
     private javax.swing.JLabel labelHab;
@@ -240,6 +262,5 @@ public class VerPacientes extends javax.swing.JFrame {
     private javax.swing.JLabel labelNombre;
     private javax.swing.JLabel labelPacientes;
     private javax.swing.JList<String> listaEnfermedades;
-    private javax.swing.JList<String> listaPacientes;
     // End of variables declaration//GEN-END:variables
 }

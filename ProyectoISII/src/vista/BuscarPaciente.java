@@ -6,15 +6,15 @@
 package vista;
 
 import javax.swing.JFrame;
-import controlador.Enfermo;
-import controlador.ListaEnfermos;
+import controlador.Paciente;
+import controlador.ListaPacientes;
 
 /**
  *
  * @author miguelguillen
  */
 public class BuscarPaciente extends javax.swing.JFrame {
-    private static ListaEnfermos lista_enfermos= new ListaEnfermos();
+    private static ListaPacientes lista_enfermos= new ListaPacientes();
 
     private JFrame frameAnterior;
     /**
@@ -128,12 +128,10 @@ public class BuscarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Añadimos un ejemplo
-        Enfermo a= new Enfermo("12345678A");
-        lista_enfermos.addEnfermo(a);
+
         //Comprobamos
         String identificador = jTextField1.getText();
-        Enfermo aux= new Enfermo(identificador);
+        Paciente aux= new Paciente(identificador);
         
         if(lista_enfermos.contains(aux)){
             HistorialPaciente paciente = new HistorialPaciente(this);
@@ -144,12 +142,10 @@ public class BuscarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //Añadimos un ejemplo
-        Enfermo a= new Enfermo("12345678A");
-        lista_enfermos.addEnfermo(a);
+
         //Comprobamos
         String identificador = jTextField1.getText();
-        Enfermo aux= new Enfermo(identificador);
+        Paciente aux= new Paciente(identificador);
         
         if(lista_enfermos.contains(aux)){
             System.out.println("El paciente con DNI: "+ aux.getIdentificador()+ " ha sido dado de alta.");

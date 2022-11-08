@@ -8,20 +8,20 @@ package controlador;
  *
  * @author educe
  */
-public class Enfermo {
+public class Paciente {
     private String identificador;
     private String nombre;
     private String apellidos;
     private String habitacion;
 
-    public Enfermo(String identificador, String nombre, String apellidos, String habitacion) {
+    public Paciente(String identificador, String nombre, String apellidos, String habitacion) {
         this.identificador = identificador;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.habitacion = habitacion;
     }
     
-    public Enfermo(String identificador) {
+    public Paciente(String identificador) {
         this.identificador = identificador;
     }
 
