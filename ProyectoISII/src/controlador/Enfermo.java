@@ -20,6 +20,10 @@ public class Enfermo {
         this.apellidos = apellidos;
         this.habitacion = habitacion;
     }
+    
+    public Enfermo(String identificador) {
+        this.identificador = identificador;
+    }
 
     public String getIdentificador() {
         return identificador;
