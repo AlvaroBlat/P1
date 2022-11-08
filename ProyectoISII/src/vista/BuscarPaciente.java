@@ -139,7 +139,7 @@ public class BuscarPaciente extends javax.swing.JFrame {
         lista_enfermos.addEnfermo(a);
         //Comprobamos
         String identificador = jTextField1.getText();
-        Enfermo aux= new Enfermo(identificador);
+        Enfermo aux= new Enfermo(identificador,"","","");
         
         if(lista_enfermos.contains(aux)){
             System.out.println("El paciente con DNI: "+ aux.getIdentificador()+ "ha sido dado de alta.");
