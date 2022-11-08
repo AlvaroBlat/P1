@@ -20,42 +20,39 @@ import javax.swing.JList;
  */
 public class VerPacientesEnf extends javax.swing.JFrame {
 
-    private ListaPacientes listaEnfermos;
+    private ListaPacientes listaEnfermos = new ListaPacientes();
     private JFrame frameAnterior;
     public VerPacientesEnf(JFrame frameAnterior) {
         initComponents();
         this.frameAnterior=frameAnterior;
+        listaPacientes.clearSelection();
+        updateListPacientes();
+        
     }
 
-    
-    /**
-     *
-     */
-    public void updateListActividades() {
+    public void updateListPacientes() {
 
         DefaultListModel listModelPacientes = new DefaultListModel();
-        for (Object item : listaEnfermos.consultarPacientes()) {
-            listModelPacientes.addElement(item);
+        for (Paciente item : listaEnfermos.getVectorMedicos()) {
+            listModelPacientes.addElement(item.getIdentificador());
         }
 
         listaPacientes.setModel(listModelPacientes);
         listaPacientes.setCellRenderer(new NombrePacienteCellRenderer());
     }
     
-    /**
-     *
-     */
+
     public class NombrePacienteCellRenderer extends DefaultListCellRenderer {
 
         public Component getListCellRendererComponent(
-                JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 
-            JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            label.setText(value.toString());
-            return label;
+                JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                label.setText(value.toString());
+                return label;
         }
     }
-    
+  
     
     public void limpiarDetallesPaciente() {
         jLabelNombre.setText("");
@@ -95,11 +92,6 @@ public class VerPacientesEnf extends javax.swing.JFrame {
 
         labelApellidos.setText("Apellidos:");
 
-        listaPacientes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Paciente 1", "Paciente 2", "Paciente 3" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         listaPacientes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listaPacientesValueChanged(evt);
@@ -226,12 +218,19 @@ public class VerPacientesEnf extends javax.swing.JFrame {
             //Limpiar campos del paciente actual
             limpiarDetallesPaciente();
             //Rellenar campos del paciente actual
-            Object paciente = listaPacientes.getSelectedValue();
-            Paciente detallesPaciente = listaEnfermos.consultarDetallesEnfermo(paciente);
-            jLabelNombre.setText(detallesPaciente.getIdentificador());
-            jLabelApellidos.setText(detallesPaciente.getApellidos());
-            jLabelHabitacion.setText(detallesPaciente.getHabitacion());
-           
+            
+            for(Paciente aux : listaEnfermos.getVectorMedicos())
+            {   
+                if(aux.getIdentificador().equals(listaPacientes.getSelectedValue()))
+                {
+                    jLabelNombre.setText(aux.getNombre());
+                    jLabelApellidos.setText(aux.getApellidos());
+                    jLabelHabitacion.setText(aux.getHabitacion());
+                    
+                    
+                    
+                }                
+            }
         }
     }//GEN-LAST:event_listaPacientesValueChanged
 

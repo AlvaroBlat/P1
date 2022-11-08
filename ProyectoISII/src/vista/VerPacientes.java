@@ -23,43 +23,38 @@ public class VerPacientes extends javax.swing.JFrame {
 
     private ListaPacientes listaEnfermos = new ListaPacientes();
     private JFrame frameAnterior;
+    
     public VerPacientes(JFrame frameAnterior) {
         initComponents();
         this.frameAnterior=frameAnterior;
+        JListPacientes.clearSelection();
+        updateListPacientes();
         
-        TextAreaPacientes.setText(listaEnfermos.listarListaPacientes());
-        TextAreaPacientes.setEditable(false);
     }
 
-    
-    /**
-     *
-     */
-    public void updateListActividades() {
+    public void updateListPacientes() {
 
         DefaultListModel listModelPacientes = new DefaultListModel();
-        for (Object item : listaEnfermos.consultarPacientes()) {
-            listModelPacientes.addElement(item);
+        for (Paciente item : listaEnfermos.getVectorMedicos()) {
+            listModelPacientes.addElement(item.getIdentificador());
         }
 
         JListPacientes.setModel(listModelPacientes);
         JListPacientes.setCellRenderer(new NombrePacienteCellRenderer());
     }
     
-    /**
-     *
-     */
+
     public class NombrePacienteCellRenderer extends DefaultListCellRenderer {
 
         public Component getListCellRendererComponent(
-                JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 
-            JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            label.setText(value.toString());
-            return label;
+                JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                label.setText(value.toString());
+                return label;
         }
     }
-    
+  
     
     public void limpiarDetallesPaciente() {
         labelNom.setText("");
@@ -90,8 +85,6 @@ public class VerPacientes extends javax.swing.JFrame {
         labelNom = new javax.swing.JLabel();
         jCalendar2 = new com.toedter.calendar.JCalendar();
         labelApe = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        TextAreaPacientes = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,11 +108,6 @@ public class VerPacientes extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(listaEnfermedades);
 
-        JListPacientes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "P1", "P2", "P3" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         JListPacientes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 JListPacientesValueChanged(evt);
@@ -137,10 +125,6 @@ public class VerPacientes extends javax.swing.JFrame {
 
         labelApe.setText("Apellidos");
 
-        TextAreaPacientes.setColumns(20);
-        TextAreaPacientes.setRows(5);
-        jScrollPane3.setViewportView(TextAreaPacientes);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -155,7 +139,7 @@ public class VerPacientes extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addComponent(botonVolver)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,9 +163,7 @@ public class VerPacientes extends javax.swing.JFrame {
                                 .addComponent(labelHabitacion)
                                 .addGap(18, 18, 18)
                                 .addComponent(labelHab, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(89, 89, 89))))
+                        .addGap(258, 258, 258))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,20 +181,17 @@ public class VerPacientes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelInfo)
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelNombre)
-                            .addComponent(labelNom))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelApellidos)
-                            .addComponent(labelApe))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelHabitacion)
-                            .addComponent(labelHab)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombre)
+                    .addComponent(labelNom))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelApellidos)
+                    .addComponent(labelApe))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelHabitacion)
+                    .addComponent(labelHab))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(80, Short.MAX_VALUE))
@@ -234,25 +213,29 @@ public class VerPacientes extends javax.swing.JFrame {
             limpiarDetallesPaciente();
             //Rellenar campos del paciente actual
             
-            
-            Object paciente = JListPacientes.getSelectedValue();
-            Paciente detallesPaciente = listaEnfermos.consultarDetallesEnfermo(paciente);
-            labelNom.setText(detallesPaciente.getIdentificador());
-            labelApe.setText(detallesPaciente.getApellidos());
-            labelHab.setText(detallesPaciente.getHabitacion());
-
+            for(Paciente aux : listaEnfermos.getVectorMedicos())
+            {   
+                if(aux.getIdentificador().equals(JListPacientes.getSelectedValue()))
+                {
+                    labelNom.setText(aux.getNombre());
+                    labelApe.setText(aux.getApellidos());
+                    labelHab.setText(aux.getHabitacion());
+                    
+                    
+                    
+                }                
+            }
         }
+               
     }//GEN-LAST:event_JListPacientesValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> JListPacientes;
-    private javax.swing.JTextArea TextAreaPacientes;
     private javax.swing.JButton botonVolver;
     private com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel labelApe;
     private javax.swing.JLabel labelApellidos;
     private javax.swing.JLabel labelHab;

@@ -11,26 +11,31 @@ import java.util.Vector;
  * @author educe
  */
 public class ListaPacientes {
-    private ArrayList<Paciente> listaPacientes= new ArrayList<Paciente>();
+    private Vector<Paciente> listaPacientes= new Vector<Paciente>();
 
     public ListaPacientes() {
-        
-        Paciente p1 = new Paciente("12345678A","Nom1","Ape1","Hab1"); 
-        Paciente p2 = new Paciente("12341112A","Nom2","Ape2","Hab2"); 
-        Paciente p3 = new Paciente("12341111A","Nom3","Ape3","Hab3"); 
+        Paciente p1 = new Paciente("12345678A","Miguel","Guillen","1");
+        Paciente p2 = new Paciente("12345678B","Alvaro","Blat","2");
         
         listaPacientes.add(p1);
         listaPacientes.add(p2);
-        listaPacientes.add(p3);
-
+                
     }
 
-     public ArrayList<Paciente> getVectorMedicos() {
+     public Vector<Paciente> getVectorMedicos() {
         return listaPacientes;
+    }
+     
+    public int tamLista(){
+        return listaPacientes.size();
     }
 
     public void addPaciente(Paciente enfermo) {
         listaPacientes.add(enfermo);
+    }
+    
+    public Paciente getPaciente(int i){
+        return listaPacientes.get(i);
     }
     public boolean contains(Paciente enfermo){
         String nombre=enfermo.getIdentificador();
@@ -39,12 +44,9 @@ public class ListaPacientes {
        for (int i=0; i<listaPacientes.size();i++){
            aux= listaPacientes.get(i);
                      
-           if(nombre.equals(aux.getIdentificador())){
-               
-                   return true;
-               
-           }
-           
+           if(nombre.equals(aux.getIdentificador())){  
+                   return true; 
+           } 
        }
         return false;
     }
