@@ -4,6 +4,7 @@ package modelo;
 
 import java.util.Date;
 import java.util.LinkedList;
+import modelo.Objetos.Paciente;
 import modelo.Objetos.Proyecto;
 import vista.VistaRecivirDato;
 
@@ -32,7 +33,12 @@ public class ImplementacionModelo implements ModeloCrear {
         return proyecto.dameMedicamento(nombre);
     }
     
-        public String dameMedicamentos(){
+    public String dameMedicamentos(){
         return proyecto.dameMedicamentos();
+    }
+
+    @Override
+    public void crearPaciente(Paciente p) {
+        proyecto.añadirPaciente(p);
     }
 }

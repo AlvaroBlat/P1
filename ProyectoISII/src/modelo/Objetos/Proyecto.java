@@ -161,7 +161,10 @@ public class Proyecto {
 
         return sol;
     }
-        
+    
+    public void añadirPaciente(Paciente p){
+        pacientes.add(p);
+    }
     // GUARDAR INFO EN ARCHIVOS !!! NO FUNCIONA !!! NO SE PORQUE
     public void cargar(){
         cargarEnfermeras();

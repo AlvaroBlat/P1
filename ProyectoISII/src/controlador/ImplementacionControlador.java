@@ -2,6 +2,7 @@ package controlador;
 
 import modelo.ModeloCrear;
 import vista.VistaDarDato;
+import modelo.Objetos.Paciente;
 
 public class ImplementacionControlador implements Controlador{
 
@@ -14,6 +15,11 @@ public class ImplementacionControlador implements Controlador{
 
     public void setVistaDarModelo(VistaDarDato vistaDarDato) {
         this.vistaDarDato = vistaDarDato;
+    }
+
+    @Override
+    public void crearPaciente(String ident, String nombre, String apellidos, String identificador) {
+        modeloCrear.crearPaciente(new Paciente(ident, nombre, apellidos, identificador));
     }
     
 

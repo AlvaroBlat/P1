@@ -1,5 +1,6 @@
 package controlador;
 
 public interface Controlador {
-    // Operaciones a realizar
+    // Paceintes
+    void crearPaciente(String ident, String nombre, String apellidos, String identificador);
 }
