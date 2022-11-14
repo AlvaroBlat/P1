@@ -6,6 +6,8 @@
 package vista.opcionesMedico;
 
 import javax.swing.JFrame;
+import modelo.Objetos.Medicamentos;
+
 
 /**
  *
@@ -99,13 +101,21 @@ public class BuscarMedicamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Medicamento medicamento = new Medicamento(this);
-        this.setVisible(false);
-        medicamento.setVisible(true);
+       Medicamentos lista_medicamentos=new Medicamentos();
+       String busqueda= jTextField2.getText();
+       
+       if(lista_medicamentos.buscar(busqueda)){
+            Medicamento_lista medicamento = new Medicamento_lista(this, busqueda);
+            this.setVisible(false);
+            medicamento.setVisible(true);
+             } else{
+           System.out.println("Medicamento no encontrado");
+       }
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed

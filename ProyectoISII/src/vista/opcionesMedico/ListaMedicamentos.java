@@ -44,6 +44,11 @@ public class ListaMedicamentos extends javax.swing.JFrame {
         });
 
         botonBuscarListaMedicamentos.setText("Buscar");
+        botonBuscarListaMedicamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarListaMedicamentosActionPerformed(evt);
+            }
+        });
 
         listaListaMedicamentos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -103,6 +108,10 @@ public class ListaMedicamentos extends javax.swing.JFrame {
         this.setVisible(false);
         frameAnterior.setVisible(true);
     }//GEN-LAST:event_botonVolverActionPerformed
+
+    private void botonBuscarListaMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarListaMedicamentosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonBuscarListaMedicamentosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
