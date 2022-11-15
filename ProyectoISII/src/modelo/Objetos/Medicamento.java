@@ -16,9 +16,9 @@ public class Medicamento {
 
 
     private String nombre;
-    private int cantidad;
+    private float cantidad;
 
-    public Medicamento(String nombre, int cantidad) {
+    public Medicamento(String nombre, float cantidad) {
         this.nombre = nombre;
         this.cantidad = cantidad;
     }
@@ -40,7 +40,7 @@ public class Medicamento {
         this.nombre = nombre;
     }
 
-    public int getCantidad() {
+    public float getCantidad() {
         return cantidad;
     }
     public String listar_enfermedades(){
@@ -65,7 +65,7 @@ public class Medicamento {
         return cadena;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(float cantidad) {
         this.cantidad = cantidad;
     }
 

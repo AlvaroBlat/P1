@@ -13,12 +13,10 @@ import vista.principal.Login;
 public class ImplementacionVista extends WindowAdapter implements VistaDarDato, VistaRecivirDato{
 
     private ImplementacionControlador controlador;
-    private ImplementacionModelo modelo;
 
     public void setControlador(ImplementacionControlador controlador) {
         this.controlador = controlador;
     }
-    public void setModelo(ImplementacionModelo modelo) {this.modelo = modelo;}
 
 
     public void ejecutar() {
@@ -31,22 +29,22 @@ public class ImplementacionVista extends WindowAdapter implements VistaDarDato, 
 
     @Override
     public String dameInfoMedicinasPacientesPorFecha(int año, int mes, int dia) {
-        return modelo.medicamentosPorDia(año, mes, dia);
+        return controlador.medicamentosPorDia(año, mes, dia);
     }
 
     @Override
     public Boolean[] compruebaUsuario(int ident, String cont) {      
-        return modelo.logearse(ident, cont);
+        return controlador.logearse(ident, cont);
     }
 
     @Override
     public String ameMedicamento(String nombre) {
-        return modelo.dameMedicamento(nombre);
+        return controlador.dameMedicamento(nombre);
     }
 
     @Override
-    public String dameMedicamentos() {
-        return modelo.dameMedicamentos();
+    public String dameMedicamentos(Float cantidad) {
+        return controlador.dameMedicamentos(cantidad);
     }
 }
 

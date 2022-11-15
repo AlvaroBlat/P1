@@ -62,15 +62,15 @@ public class Proyecto {
         // Medicamentos
         Medicamento m = new Medicamento("Ibuprofeno", 1025); 
         Medicamento m1 = new Medicamento("Paracetamol (No quedan)", 0);
-        Medicamento m2 = new Medicamento("Simvastatina", 1025);
-        Medicamento m3 = new Medicamento("Aspirina", 1025);
-        Medicamento m4 = new Medicamento("Omeprazol", 1025);
-        Medicamento m5 = new Medicamento("Lexotiroxina sódica", 1025);
-        Medicamento m6 = new Medicamento("Ramipril ", 1025);
-        Medicamento m7 = new Medicamento("Amlodipina ", 1025);
-        Medicamento m8 = new Medicamento("Atorvastatina  ", 1025);
-        Medicamento m9 = new Medicamento("Salbutamol  ", 1025);
-        Medicamento m10 = new Medicamento("Lansoprazol  ", 1025);
+        Medicamento m2 = new Medicamento("Simvastatina", 550);
+        Medicamento m3 = new Medicamento("Aspirina", 144);
+        Medicamento m4 = new Medicamento("Omeprazol", 200);
+        Medicamento m5 = new Medicamento("Lexotiroxina sódica", 500);
+        Medicamento m6 = new Medicamento("Ramipril ", 796);
+        Medicamento m7 = new Medicamento("Amlodipina ", 22);
+        Medicamento m8 = new Medicamento("Atorvastatina  ", 0);
+        Medicamento m9 = new Medicamento("Salbutamol  ", 44);
+        Medicamento m10 = new Medicamento("Lansoprazol  ", 6969);
 
         medicamentos.add(m);
         medicamentos.add(m1);
@@ -157,13 +157,16 @@ public class Proyecto {
         return sol;
     }
     
-    public String dameMedicamentos(){
+    public String dameMedicamentos(Float cantidad){
         String sol = "Lista de medicamentos vacia";
         
         if(!medicamentos.isEmpty()){
             sol = "";
+            float canMedi = 0;
             for(Medicamento e: medicamentos){
-                sol += e.getNombre() + "\n";
+                canMedi = e.getCantidad();
+                if(canMedi <= cantidad)
+                    sol += e.getNombre() + ": " + canMedi +" gr\n";
             } 
         }
 

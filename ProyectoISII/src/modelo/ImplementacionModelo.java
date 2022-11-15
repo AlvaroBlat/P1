@@ -33,8 +33,8 @@ public class ImplementacionModelo implements ModeloCrear {
         return proyecto.dameMedicamento(nombre);
     }
     
-    public String dameMedicamentos(){
-        return proyecto.dameMedicamentos();
+    public String dameMedicamentos(Float cantidad){
+        return proyecto.dameMedicamentos(cantidad);
     }
 
     @Override

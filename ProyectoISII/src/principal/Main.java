@@ -30,7 +30,6 @@ public class Main {
         controlador.setModeloCrear(modelo);
         controlador.setVistaDarModelo(vista);
         
-        vista.setModelo(modelo);
         vista.setControlador(controlador);        
         vista.ejecutar();
     }

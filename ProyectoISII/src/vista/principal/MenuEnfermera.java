@@ -47,7 +47,7 @@ public class MenuEnfermera extends javax.swing.JFrame {
         jLabel1.setText("MENU ENFERMERA");
 
         jButton1.setFont(new java.awt.Font("Lucida Grande", 0, 28)); // NOI18N
-        jButton1.setText("VER PACIENTES");
+        jButton1.setText("MEDICAMENTOS DÍA");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -62,7 +62,7 @@ public class MenuEnfermera extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Lucida Grande", 0, 28)); // NOI18N
-        jButton2.setText("CONSULTAR MEDICAMENTOS");
+        jButton2.setText("BOTIQUIN");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -83,14 +83,11 @@ public class MenuEnfermera extends javax.swing.JFrame {
                         .addComponent(botonVolver)
                         .addGap(26, 26, 26))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(jButton2)))
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addGap(213, 213, 213)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
