@@ -13,12 +13,14 @@ public class Paciente {
     private String nombre;
     private String apellidos;
     private String habitacion;
+    private String fecha_Cita;
 
-    public Paciente(String identificador, String nombre, String apellidos, String habitacion) {
+    public Paciente(String identificador, String nombre, String apellidos, String habitacion, String fecha_Cita) {
         this.identificador = identificador;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.habitacion = habitacion;
+        this.fecha_Cita = fecha_Cita;
     }
     
     public Paciente(String identificador) {
@@ -57,6 +59,14 @@ public class Paciente {
         this.habitacion = habitacion;
     }
 
+    public String getFecha_Cita() {
+        return fecha_Cita;
+    }
+
+    public void setFecha_Cita(String fecha) {
+        this.fecha_Cita = fecha;
+    }
+    
     @Override
     public String toString() {
         return "Nombre: " + nombre + ", " + apellidos + "\nHabitacion: " + habitacion;

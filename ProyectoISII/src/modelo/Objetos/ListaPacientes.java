@@ -14,11 +14,19 @@ public class ListaPacientes {
     private Vector<Paciente> listaPacientes= new Vector<Paciente>();
 
     public ListaPacientes() {
-        Paciente p1 = new Paciente("12345678A","Miguel","Guillen","1");
-        Paciente p2 = new Paciente("12345678B","Alvaro","Blat","2");
+        Paciente p1 = new Paciente("12345678A","Miguel","Guillen","1","11/08/2023");
+        Paciente p2 = new Paciente("12345678B","Alvaro","Blat","2","01/09/2023");
+        Paciente p3 = new Paciente("12345238D","Pablo","Hernandez","3","11/08/2023");
+        Paciente p4 = new Paciente("12323678G","Jorge","Ibañez","4","01/09/2023");
+        Paciente p5 = new Paciente("12345768F","Lucas","Sanchez","5","11/08/2023");
+        Paciente p6 = new Paciente("12345695C","Alejandro","Perez","6","01/09/2023");
         
         listaPacientes.add(p1);
         listaPacientes.add(p2);
+        listaPacientes.add(p3);
+        listaPacientes.add(p4);
+        listaPacientes.add(p5);
+        listaPacientes.add(p6);
                 
     }
 

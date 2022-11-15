@@ -18,8 +18,8 @@ public class ImplementacionControlador implements Controlador{
     }
 
     @Override
-    public void crearPaciente(String ident, String nombre, String apellidos, String identificador) {
-        modeloCrear.crearPaciente(new Paciente(ident, nombre, apellidos, identificador));
+    public void crearPaciente(String ident, String nombre, String apellidos, String identificador, String fecha) {
+        modeloCrear.crearPaciente(new Paciente(ident, nombre, apellidos, identificador, fecha));
     }
     
 

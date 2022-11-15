@@ -93,11 +93,19 @@ public class Proyecto {
         medicos.add(me1);
         
         // Pacientes
-        Paciente p1 = new Paciente("12345678A","Miguel","Guillen","1");
-        Paciente p2 = new Paciente("12345678B","Alvaro","Blat","2");
+        Paciente p1 = new Paciente("12345678A","Miguel","Guillen","1","11/08/2023");
+        Paciente p2 = new Paciente("12345678B","Alvaro","Blat","2","01/09/2023");
+        Paciente p3 = new Paciente("12345238D","Pablo","Hernandez","3","11/08/2023");
+        Paciente p4 = new Paciente("12323678G","Jorge","Ibañez","4","01/09/2023");
+        Paciente p5 = new Paciente("12345768F","Lucas","Sanchez","5","11/08/2023");
+        Paciente p6 = new Paciente("12345695C","Alejandro","Perez","6","01/09/2023");
         
         pacientes.add(p1);
         pacientes.add(p2);
+        pacientes.add(p3);
+        pacientes.add(p4);
+        pacientes.add(p5);
+        pacientes.add(p6);
         
         // ListaTratameintoPacienteDia
         listaTratameintoPacienteDia.add(new TratamientoPacienteDia(p1, m1, "0.33 gr", 25, 10, 2022));

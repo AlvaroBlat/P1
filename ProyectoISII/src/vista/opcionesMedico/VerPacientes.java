@@ -8,6 +8,10 @@ package vista.opcionesMedico;
 import modelo.Objetos.Paciente;
 import modelo.Objetos.ListaPacientes;
 import java.awt.Component;
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
@@ -28,7 +32,7 @@ public class VerPacientes extends javax.swing.JFrame {
         initComponents();
         this.frameAnterior=frameAnterior;
         JListPacientes.clearSelection();
-        updateListPacientes();
+        //updateListPacientes();
         
     }
 
@@ -36,7 +40,11 @@ public class VerPacientes extends javax.swing.JFrame {
 
         DefaultListModel listModelPacientes = new DefaultListModel();
         for (Paciente item : listaEnfermos.getVectorMedicos()) {
-            listModelPacientes.addElement(item.getIdentificador());
+            if (ComprobarFecha(jCalendar2.getCalendar(), item.getFecha_Cita())){
+                listModelPacientes.addElement(item.getIdentificador());
+            }
+            
+            System.out.println(item.getFecha_Cita());
         }
 
         JListPacientes.setModel(listModelPacientes);
@@ -44,6 +52,44 @@ public class VerPacientes extends javax.swing.JFrame {
     }
     
 
+    public boolean ComprobarFecha(Calendar f, String d){
+        
+        boolean ok = false;
+        Calendar date = Calendar.getInstance();
+        
+        date.set(Integer.parseInt(d.substring(6, 10)), 
+                Integer.parseInt(d.substring(3, 5)), 
+                Integer.parseInt(d.substring(0, 2)));
+        
+        /*
+        System.out.println("Mes --> " + Integer.parseInt(d.substring(3, 5)));
+        System.out.println(date.get(Calendar.MONTH));
+        System.out.println(f.get(Calendar.MONTH) + "\n");*/
+        
+        if (f.get(Calendar.YEAR) == date.get(Calendar.YEAR)){
+            System.out.println("Anyo --> " + Integer.parseInt(d.substring(6, 10)));
+            System.out.println(date.get(Calendar.YEAR));
+            System.out.println(f.get(Calendar.YEAR) + "\n");
+            
+            if (f.get(Calendar.MONTH)+1 == date.get(Calendar.MONTH)){
+                System.out.println("Mes --> " + Integer.parseInt(d.substring(3, 5)));
+                System.out.println(date.get(Calendar.MONTH));
+                System.out.println(f.get(Calendar.MONTH) + "\n");
+                
+                if (f.get(Calendar.DATE) == date.get(Calendar.DATE)){
+                    System.out.println("Dia --> " + Integer.parseInt(d.substring(0, 2)));
+                    System.out.println(date.get(Calendar.DATE));
+                    System.out.println(f.get(Calendar.DATE) + "\n");
+                    
+                    ok = true;
+                }
+            }
+        }
+            
+        
+        return ok;
+    }
+    
     public class NombrePacienteCellRenderer extends DefaultListCellRenderer {
 
         public Component getListCellRendererComponent(
@@ -85,6 +131,7 @@ public class VerPacientes extends javax.swing.JFrame {
         labelNom = new javax.swing.JLabel();
         jCalendar2 = new com.toedter.calendar.JCalendar();
         labelApe = new javax.swing.JLabel();
+        ActualizarLista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,21 +172,27 @@ public class VerPacientes extends javax.swing.JFrame {
 
         labelApe.setText("Apellidos");
 
+        ActualizarLista.setText("Actualizar Lista");
+        ActualizarLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarListaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelPacientes)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(botonVolver)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addComponent(ActualizarLista, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonVolver))
+                    .addComponent(labelPacientes)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,7 +226,9 @@ public class VerPacientes extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
-                .addComponent(botonVolver)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonVolver)
+                    .addComponent(ActualizarLista))
                 .addGap(52, 52, 52))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -229,8 +284,18 @@ public class VerPacientes extends javax.swing.JFrame {
                
     }//GEN-LAST:event_JListPacientesValueChanged
 
+    private void ActualizarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarListaActionPerformed
+        // TODO add your handling code here:
+        /*DefaultListModel listModelPacientes = new DefaultListModel();
+        JListPacientes.setModel(listModelPacientes);
+        JListPacientes.setCellRenderer(new NombrePacienteCellRenderer());*/
+        updateListPacientes();
+        //jCalendar2.setDate(null);
+    }//GEN-LAST:event_ActualizarListaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ActualizarLista;
     private javax.swing.JList<String> JListPacientes;
     private javax.swing.JButton botonVolver;
     private com.toedter.calendar.JCalendar jCalendar2;
