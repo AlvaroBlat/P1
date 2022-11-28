@@ -5,6 +5,7 @@
  */
 package vista.opcionesMedico;
 
+import Base_de_datos.DAO_MEDICAMENTOS_SQL;
 import javax.swing.JFrame;
 
 import javax.swing.JOptionPane;
@@ -22,6 +23,7 @@ public class Medicamento_lista extends javax.swing.JFrame {
 
     
     public Medicamento_lista(JFrame frameAnterior, String nombre) {
+        DAO_MEDICAMENTOS_SQL dao=new DAO_MEDICAMENTOS_SQL();
         initComponents();
         String busqueda= nombre;
         this.medicamentos = new Medicamentos();
@@ -29,9 +31,9 @@ public class Medicamento_lista extends javax.swing.JFrame {
         
        
        Medicamento aux= medicamentos.getMedicamento(busqueda);
-        Panel1.setText(aux.listar_enfermedades());
-        Panel2.setText(aux.listar_alergias());
-        Panel3.setText(aux.listar_enfermedades());
+        Panel1.setText(dao.enfermedades_que_cura(busqueda));
+        Panel2.setText(dao.alergias(busqueda));
+        Panel3.setText(dao.efectos_secundarios(busqueda));
        
     }
 
