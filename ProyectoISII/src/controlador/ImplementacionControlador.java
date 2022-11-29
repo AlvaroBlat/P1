@@ -24,7 +24,7 @@ public class ImplementacionControlador implements Controlador{
 
     @Override
     public String medicamentosPorDia(int año, int mes, int dia) {
-        return modeloCrear.medicamentosPorDia(año, mes, dia);
+        return modeloCrear.medicamentosPorDia(año, mes, dia);  
     }
 
     @Override

@@ -34,7 +34,7 @@ public class ImplementacionVista extends WindowAdapter implements VistaDarDato, 
 
     @Override
     public Boolean[] compruebaUsuario(int ident, String cont) {      
-        return controlador.logearse(ident, cont);
+        return controlador.logearse(ident, cont);   
     }
 
     @Override

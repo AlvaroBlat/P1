@@ -10,3 +10,4 @@ public interface Controlador {
     String dameMedicamento(String nombre);
     String dameMedicamentos(Float cantidad);
 }
+  
