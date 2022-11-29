@@ -42,7 +42,7 @@ public class ProyectoTest {
         String sol = p.medicamentosPorDia(25, 10, 2022);
         System.out.println(sol);
         String s = p.medicamentosPorDia(25, 10, 2022);
-        Assert.assertEquals("s", "s");
+        Assert.assertEquals("s", "s");        
     }
 
 
