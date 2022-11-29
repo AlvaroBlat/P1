@@ -5,6 +5,8 @@
  */
 package vista.opcionesMedico;
 
+import Base_de_datos.DAO_PACIENTES;
+import Base_de_datos.DAO_PACIENTES_SQL;
 import javax.swing.JFrame;
 import modelo.Objetos.Paciente;
 import modelo.Objetos.ListaPacientes;
@@ -130,10 +132,13 @@ public class BuscarPaciente extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         //Comprobamos
+        DAO_PACIENTES_SQL dao=new DAO_PACIENTES_SQL();
         String identificador = jTextField1.getText();
         Paciente aux= new Paciente(identificador);
+        String respuesta=dao.getDatos(identificador);
         
-        if(lista_enfermos.contains(aux)){
+        
+        if(respuesta.equals(identificador)){
             HistorialPaciente paciente = new HistorialPaciente(this);
             this.setVisible(false);
             paciente.setVisible(true);
@@ -144,13 +149,13 @@ public class BuscarPaciente extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         //Comprobamos
+        DAO_PACIENTES_SQL dao=new DAO_PACIENTES_SQL();
         String identificador = jTextField1.getText();
         Paciente aux= new Paciente(identificador);
         
-        if(lista_enfermos.contains(aux)){
+        if(dao.borrar(identificador)){
             System.out.println("El paciente con DNI: "+ aux.getIdentificador()+ " ha sido dado de alta.");
-            int i= lista_enfermos.PosicionEnfermo(aux);
-            lista_enfermos.BorrarPaciente(i);
+            
         } else
             System.out.println("DNI NO ENCONTRADO");
        
