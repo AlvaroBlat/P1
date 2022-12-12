@@ -36,8 +36,10 @@ public class VerPacientes extends javax.swing.JFrame {
         
     }
 
-    public void updateListPacientes() {
-
+    public boolean updateListPacientes() {
+        
+        boolean ok = false;
+        
         DefaultListModel listModelPacientes = new DefaultListModel();
         for (Paciente item : listaEnfermos.getVectorMedicos()) {
             if (ComprobarFecha(jCalendar2.getCalendar(), item.getFecha_Cita())){
@@ -45,10 +47,13 @@ public class VerPacientes extends javax.swing.JFrame {
             }
             
             System.out.println(item.getFecha_Cita());
+            ok = true;
         }
 
         JListPacientes.setModel(listModelPacientes);
         JListPacientes.setCellRenderer(new NombrePacienteCellRenderer());
+        
+        return ok;
     }
     
 
