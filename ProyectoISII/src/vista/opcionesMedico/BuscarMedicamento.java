@@ -7,7 +7,7 @@ package vista.opcionesMedico;
 
 import Base_de_datos.DAO_MEDICAMENTOS_SQL;
 import javax.swing.JFrame;
-import modelo.Objetos.Medicamentos;
+import modelo.Objetos.Medicamento;
 
 
 /**
@@ -107,7 +107,6 @@ public class BuscarMedicamento extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        DAO_MEDICAMENTOS_SQL dao=new DAO_MEDICAMENTOS_SQL();
-        Medicamentos lista_medicamentos=new Medicamentos();
        String busqueda= jTextField2.getText();
        String resultado=dao.leer(busqueda);
        

@@ -18,7 +18,7 @@ public class Conexion_pacientes {
 try {
  Class.forName("com.mysql.cj.jdbc.Driver"); // Driver de mysql
  // Conexión usando usuario y clave de administrador de la BD
- conexionBD = DriverManager.getConnection(bd, "root", "******"); //PONER CADA UNO EL USARIO "root" Y LA CONTRASEÑA CON LA QUE CREASTEIS LA BD
+ conexionBD = DriverManager.getConnection(bd, "root", "*******"); //PONER CADA UNO EL USARIO "root" Y LA CONTRASEÑA CON LA QUE CREASTEIS LA BD
 } catch (Exception e) { // Error en la conexión con la BD
  System.out.println("Error de conexión");
  
